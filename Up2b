@@ -1,16 +1,16 @@
-[Updated] Up2B
+[Updated] Up1B
 
 close > open 
 // make sure liquidity
 // and value > 2000000000
 // haka in 1min is above than 1B
-and 1min svol * 1min close > 2000000000
+and 1min value > 1000000000
 // limited stock price
 and price < 1000
 
 // volume should increasing price
 // current close higher than previous previously
-and 1min close > prev 1min close
+and 1min close >= prev 1min close
 // close above average high 5 candles
 // and 1min close > prev 1min highest("high",5)
 and 1min high > prev 1min high
@@ -19,9 +19,9 @@ and 1min high > prev 1min high
 
 // make sure in an uptrend mode
 and 1min close > 1min sma(5)
+and 1min close > 1min sma(10)
 and 1min close > 1min sma(20)
-and 1min sma(5) >= 1min sma(10)
-and 1min sma(5) >= 1min sma(20)
+and 1min volume > 1min sma("volume", 20)
 
 // rsi momentum scenario
 and 1min rsi > 50
@@ -29,11 +29,11 @@ and 1min rsi > prev 1min rsi
 
 // buying power
 and 1min pdx > 1min ndx
+// make sure volatility
 // dmi ungu di atas dmi merah
 and 1min adx > 1min ndx
-// make sure volatility
 and 1min adx > prev 1min adx
-and 1min adx > 20
+and 1min adx > 17
 and 1min pdx > 20
 // lowering selling power
 and 1min ndx < prev 1min ndx
