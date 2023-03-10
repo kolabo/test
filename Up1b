@@ -1,0 +1,49 @@
+[Updated] Up1B
+
+close > open 
+// make sure liquidity
+// and value > 2000000000
+// haka in 1min is above than 1B
+and 1min svol * 1min close > 1000000000
+and 1min svol * 1min close < 2000000000
+// limited stock price
+and price < 1000
+
+// volume should increasing price
+// current close higher than previous previously
+and 1min close > prev 1min close
+// close above average high 5 candles
+// and 1min close > prev 1min highest("high",5)
+and 1min high > prev 1min high
+// make sure to make lower high
+// and 1min low > prev 1min low
+
+// make sure in an uptrend mode
+and 1min close > 1min sma(5)
+and 1min close > 1min sma(20)
+and 1min sma(5) >= 1min sma(10)
+and 1min sma(5) >= 1min sma(20)
+
+// rsi momentum scenario
+and 1min rsi > 50
+and 1min rsi > prev 1min rsi
+
+// buying power
+and 1min pdx > 1min ndx
+// dmi ungu di atas dmi merah
+and 1min adx > 1min ndx
+// make sure volatility
+and 1min adx > prev 1min adx
+and 1min adx > 20
+and 1min pdx > 20
+// lowering selling power
+and 1min ndx < prev 1min ndx
+
+// stoch momentum
+and 1min stoch_k(14,3) > prev 1min stoch_k(14,3)
+// golden cross happened in the past candle
+and 1min stoch_k(14,3) > 1min stoch_d(14,3,3)
+// slower goes up as a guard
+and 1min stoch_k(14,14) > prev 1min stoch_k(14,14)
+and 1min stoch_k(14,14) > 19
+and 1min stoch_k(14,14) < 80
