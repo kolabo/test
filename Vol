@@ -1,17 +1,17 @@
 // [Updated] Gainers with vol
-// Purpose: cari keramaian berdasarkan haka dalam 5menit lebih dari 1.5M dalam posisi uptrend, minimalisir false alert dan jumlah alert yang diterima
+// Purpose: cari keramaian berdasarkan haka dalam 5menit lebih dari 250M dalam posisi uptrend, minimalisir false alert dan jumlah alert yang diterima
 
 close > open 
 // make sure liquidity
 // and value > 2000000000
-// haka in 5min is above than 1.5B
-and 5min svol * 5min close > 1500000000
+// haka in 5min is above than 250M
+and 5min svol * 5min close > 250000000
 // limited stock price
 and price < 3500
 
 // volume should increasing price
 // current close higher than previous previously
-and 5min close > prev 5min close
+and 5min close >= prev 5min close
 // close above average high 5 candles
 // and 5min close > prev 5min highest("high",5)
 and 5min high > prev 5min high
@@ -20,9 +20,9 @@ and 5min high > prev 5min high
 
 // make sure in an uptrend mode
 and 5min close > 5min sma(5)
+and 5min close > 5min sma(10)
 and 5min close > 5min sma(20)
-and 5min sma(5) >= 5min sma(10)
-and 5min sma(5) >= 5min sma(20)
+and 5min volume > 5min sma("volume", 20)
 
 // rsi momentum scenario
 and 5min rsi > 50
@@ -30,11 +30,11 @@ and 5min rsi > prev 5min rsi
 
 // buying power
 and 5min pdx > 5min ndx
+// make sure volatility
 // dmi ungu di atas dmi merah
 and 5min adx > 5min ndx
-// make sure volatility
-and 5min adx > prev 5min adx
-and 5min adx > 20
+// ### temporary disabled and 5min adx > prev 5min adx
+and 5min adx > 17
 and 5min pdx > 20
 // lowering selling power
 and 5min ndx < prev 5min ndx
