@@ -3,9 +3,9 @@
 
 close > open 
 // make sure liquidity
-// and value > 2000000000
+and value > 1000000000
 // haka in 5min is above than 250M
-and 5min value > 250000000
+and 5min svol * 5min close > 250000000
 // limited stock price
 and price < 3500
 
