@@ -1,4 +1,4 @@
-[Updated] Up2B
+// [Updated] Up2B
 
 close > open 
 // make sure liquidity
@@ -29,10 +29,13 @@ and 1min rsi > prev 1min rsi
 
 // buying power
 and 1min pdx > 1min ndx
+and 1min pdx > prev 1min pdx
+and 1min pdx > prev_2 1min pdx
+and 1min pdx > prev_4 1min pdx
 // make sure volatility
 // dmi ungu di atas dmi merah
 and 1min adx > 1min ndx
-and 1min adx > prev 1min adx
+// ### temporary disable ### and 5min adx > prev 5min adx
 and 1min adx > 17
 and 1min pdx > 20
 // lowering selling power
