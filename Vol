@@ -5,7 +5,7 @@ close > open
 // make sure liquidity
 // and value > 2000000000
 // haka in 5min is above than 250M
-and 5min svol * 5min close > 250000000
+and 5min value > 250000000
 // limited stock price
 and price < 3500
 
@@ -33,7 +33,7 @@ and 5min pdx > 5min ndx
 // make sure volatility
 // dmi ungu di atas dmi merah
 and 5min adx > 5min ndx
-// ### temporary disabled and 5min adx > prev 5min adx
+and 5min adx > prev 5min adx
 and 5min adx > 17
 and 5min pdx > 20
 // lowering selling power
